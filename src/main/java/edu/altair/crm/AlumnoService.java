@@ -3,6 +3,9 @@ package edu.altair.crm;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+
+import edu.altair.crm.entidades.Alumno;
+
 import java.util.Optional;
 
 // Indicamos a Spring que esta clase contiene la lógica de la aplicación.
@@ -22,10 +25,10 @@ public class AlumnoService {
         return alumnoRepository.findAll();
     }
 
-    // Busca un alumno por su identificador.
+    // Busca un alumno por su DNI.
     // Si no existe, lanza una excepción indicando que no se ha encontrado.
-    public Alumno buscarPorId(Long id) {
-        Optional<Alumno> alumno = alumnoRepository.findById(id);
+    public Alumno buscarPorId(String dni) {
+        Optional<Alumno> alumno = alumnoRepository.findById(dni);
 
         if (alumno.isPresent()) {
             return alumno.get();
